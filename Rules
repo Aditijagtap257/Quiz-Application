@@ -1,0 +1,79 @@
+package quiz_Application;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Rules extends JFrame implements ActionListener{
+	String name;
+	JButton start;
+	JButton back;
+	
+Rules(String name){
+	this.name=name;
+	getContentPane().setBackground(Color.pink);
+	setLayout(null);
+	setSize(1000,500);
+	setLocation(180,180);
+	setVisible(true);
+	
+	JLabel heading=new JLabel("WELCOME  TO Quiz");
+	heading.setBounds(300,20,800,90);
+	heading.setFont(new Font("Viner Hand ITC",Font.BOLD,28));
+	add(heading);
+	
+	JLabel rr=new JLabel();
+	rr.setBounds(30,50,800,400);
+	rr.setFont(new Font("Mongolian Baiti",Font.PLAIN,14));
+	rr.setText( "<html>"+ 
+        "1. Answer Honestly: Provide your best answer to each question." + "<br><br>" +
+        "2. Time's Up, Tough Luck!: Tick-tock, time flies faster than your neighbor's Wi-Fi. Answer quickly!\r\n"
+        + "" + "<br><br>" +
+        "3. Scoring System: Earn points for correct answers" + "<br><br>" +
+        "4. Fair Play: No cheating or using external sources for answers." + "<br><br>" +
+        "5. 50-50 Lifeline: Hedge Your Bets: Feeling unsure? Activate the 50-50 lifeline to eliminate two incorrect answers and increase your odds of choosing the right one!" + "<br><br>" +
+        "6.The Only Thing We Take Seriously is Fun: Relax, it's just a game! Laugh, learn, and have a blast." + "<br><br>" +
+        "7. Enjoy the Challenge: Embrace the excitement of testing your knowledge and skills.\r\n"
+        + "" + "<br><br>" +
+        "8. The Only Wrong Answer is Not Answering at All: Don't leave us hanging! Even a wild guess is better than silence." + "<br><br>" +
+        "<html>");
+	add(rr);
+	
+	start = new JButton("START");
+	start.setBackground(new Color(30,144,254));
+	//rules.setBackground(Color.LIGHT_GRAY);	
+	start.setBounds(200,400,80,30);
+	start.addActionListener(this);
+	add(start);
+	
+	 back = new JButton("BACK");
+	back.setBackground(new Color(30,144,254));
+	back.setBounds(400,400,80,30);
+	//first for left // top//length//last for width
+	back.addActionListener(this);
+	add(back);
+	
+	setVisible(true);	//makes interface visible if true
+    setSize(900,500);//size
+    setLocation(200,150);//location 
+
+}
+public  void actionPerformed(ActionEvent ae) {
+	if(ae.getSource()==start) {
+		//String name=t1.getText();
+		setVisible(false);//make current tab invisible
+		//new Rules(name);//call rules
+		new Quiz();
+	}
+	else if(ae.getSource()==back) {
+		setVisible(false);
+		new Login();
+		//becoz when we click back it closes .i.e we make it unvisible
+	}
+
+	
+}
+public static void main(String[] args) {
+	new Rules("USER");
+}
+}
