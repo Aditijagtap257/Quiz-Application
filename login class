@@ -1,0 +1,73 @@
+package quiz_Application;
+import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class Login extends JFrame implements ActionListener{
+	JButton rules;
+	JButton back;
+	JTextField t1;
+	//we made this static so that it can be acesed by action class
+	Login(){
+	getContentPane().setBackground(Color.white);//set background colour
+	ImageIcon i1= new ImageIcon(this.getClass().getResource("/Quiz.jpg"));
+	JLabel image = new JLabel(i1);
+	
+	JLabel heading = new JLabel("Lets go!!!");
+	heading.setBounds(500,60,300,60);
+	//heading.setForeground(new c)
+	add(heading);
+	heading.setFont(new Font("Viner Hand ITC",Font.BOLD,40));
+	
+	JLabel name=new JLabel("NAME :");
+	name.setBounds(500,60,500,200);
+	add(name);
+	name.setFont(new Font("Mongolian Baiti",Font.BOLD,20));
+	
+	setLayout(null);
+	name.setBackground(Color.green);	
+	image.setBounds(0,0,400,400);
+	add(image);
+	
+	t1= new JTextField();
+	t1.setBounds(600,143,90,30);
+	add(t1);
+	
+	rules = new JButton("RULES");
+	rules.setBackground(new Color(30,144,254));
+	//rules.setBackground(Color.LIGHT_GRAY);	
+	rules.setBounds(600,190,80,30);
+	rules.addActionListener(this);
+	add(rules);
+	
+	 back = new JButton("BACK");
+	back.setBackground(new Color(30,144,254));
+	back.setBounds(700,190,80,30);
+	//first for left // top//length//last for width(down)
+	back.addActionListener(this);
+	add(back);
+	
+	setVisible(true);	//makes interface visible if true
+    setSize(900,500);//size
+    setLocation(200,150);//location 
+	}
+//we imported java.awt.event.* and implemented ActionListener to add anthor page by clicking on button for rules and back 
+//actionPerformed unimplemented in that ActionListener class so we override that method to implement it
+	public  void actionPerformed(ActionEvent ae) {
+		if(ae.getSource()==rules) {
+			String name=t1.getText();
+			setVisible(false);//make current tab invisible
+			new Rules(name);//call rules
+		}
+		else if(ae.getSource()==back) {
+			setVisible(false);
+			//becoz when we click back it closes .i.e we make it unvisible
+		}
+		
+	}
+public static void main(String[] args) {
+	new Login();
+}
+}
