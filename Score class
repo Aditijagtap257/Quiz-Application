@@ -1,0 +1,54 @@
+package quiz_Application;
+
+import java.awt.*;
+
+import javax.swing.*;
+
+import java.awt.event.*;
+
+public class Score extends JFrame implements ActionListener{
+	
+    Score(int score){
+    	setBounds(50,0,1000,850);
+    	setLayout(null);
+    	setSize(1000,500);
+    	//setLocation(250,100);
+    getContentPane().setBackground(Color.white);
+    setVisible(true);
+
+      ImageIcon i1= new ImageIcon(this.getClass().getResource("/Score.jpg"));
+      JLabel image = new JLabel(i1);
+      image.setBounds(0,0,500,300);
+      add(image);
+      
+     JLabel heading=new JLabel("Thank you for playing ");
+    	heading.setBounds(20,300,300,60);
+    	heading.setFont(new Font("Tahoma",Font.PLAIN,26));
+    	add(heading);
+    	setVisible(true);
+    	
+    	JLabel urscore=new JLabel("Your score is "+ score);
+    	urscore.setBounds(20,350,300,60);
+    	urscore.setFont(new Font("Tahoma",Font.PLAIN,26));
+    	add(urscore);
+    	setVisible(true);
+    	
+      JButton  Submit =new JButton("PLAY AGAIN");
+        Submit.setBackground(new Color(30,144,254));
+        Submit.setBounds(500,500,120,20);
+    	Submit.addActionListener(this);
+        Submit.setEnabled(true); 
+        add(Submit);
+    	}
+  
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+  new Score(0);
+	}
+	
+	public  void actionPerformed(ActionEvent ae) {
+		setVisible(false);
+		new Login();
+		
+	}
+	}
